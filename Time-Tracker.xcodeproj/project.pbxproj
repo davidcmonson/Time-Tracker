@@ -20,6 +20,7 @@
 		7116F79919421700006C8F06 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7116F79719421700006C8F06 /* InfoPlist.strings */; };
 		7116F79B19421700006C8F06 /* Time_TrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7116F79A19421700006C8F06 /* Time_TrackerTests.m */; };
 		DA0536CC1A96883A0093DC3A /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0536CB1A96883A0093DC3A /* ListViewController.m */; };
+		DA0536CF1A968B180093DC3A /* ListTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0536CE1A968B180093DC3A /* ListTableViewDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		7116F79A19421700006C8F06 /* Time_TrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Time_TrackerTests.m; sourceTree = "<group>"; };
 		DA0536CA1A96883A0093DC3A /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		DA0536CB1A96883A0093DC3A /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		DA0536CD1A968B180093DC3A /* ListTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewDataSource.h; sourceTree = "<group>"; };
+		DA0536CE1A968B180093DC3A /* ListTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 			children = (
 				7116F78419421700006C8F06 /* TTAppDelegate.h */,
 				7116F78519421700006C8F06 /* TTAppDelegate.m */,
+				DA0536CD1A968B180093DC3A /* ListTableViewDataSource.h */,
+				DA0536CE1A968B180093DC3A /* ListTableViewDataSource.m */,
 				DA0536CA1A96883A0093DC3A /* ListViewController.h */,
 				DA0536CB1A96883A0093DC3A /* ListViewController.m */,
 				7116F78719421700006C8F06 /* Images.xcassets */,
@@ -247,6 +252,7 @@
 			files = (
 				7116F78619421700006C8F06 /* TTAppDelegate.m in Sources */,
 				7116F78219421700006C8F06 /* main.m in Sources */,
+				DA0536CF1A968B180093DC3A /* ListTableViewDataSource.m in Sources */,
 				DA0536CC1A96883A0093DC3A /* ListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

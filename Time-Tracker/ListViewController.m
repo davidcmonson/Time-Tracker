@@ -7,9 +7,28 @@
 //
 
 #import "ListViewController.h"
+#import "ListTableViewDataSource.h"
+
+@interface ListViewController()
+
+@property (nonatomic, strong) UITableView *tableView;
+
+@end
 
 @implementation ListViewController
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.dataSource = [ListTableViewDataSource new];
+    }
+    return self;
+}
 
+- (void)viewDidLoad {
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView.dataSource = self.dataSource;
+    [self.view addSubview:self.tableView];
+}
 
 @end
