@@ -8,6 +8,7 @@
 
 #import "Project.h"
 #import "WorkPeriods.h"
+#import "ProjectController.h"
 
 static NSString * const TitleKey = @"title";
 
@@ -35,6 +36,23 @@ static NSString * const EntryKey = @"entry";
     return self;
 }
 
+- (NSDictionary *)projectDictionary {
+    NSMutableDictionary *dictionary = [NSMutableDictionary new];
+    if (self.title) {
+        dictionary[TitleKey] = self.title;
+    }
+    NSMutableArray *entries = [NSMutableArray new];
+    for (WorkPeriods *entry in self.entries) {
+        NSDictionary *dictionary = [entry workPeriodsDictionary];
+        [entries addObject:dictionary];
+    }
+    return dictionary;
+}
+
+- (void)synchronize {
+    [[ProjectController sharedInstance] synchronize];
+}
+
 - (void)addEntry:(WorkPeriods *)entry {
     if (!entry) {
         return;
@@ -44,7 +62,7 @@ static NSString * const EntryKey = @"entry";
     [mutableEntries addObject:entry];
     
     self.entries = mutableEntries;
-    
+    [self synchronize];
 }
 
 - (void)removeEntry:(WorkPeriods *)entry {
@@ -56,11 +74,9 @@ static NSString * const EntryKey = @"entry";
     [mutableEntries removeObject:entry];
     
     self.entries = mutableEntries;
-    
+    [self synchronize];
 }
 
-- (NSDictionary *)workPeriodsDictionary {
-    return [NSDictionary new];
-}
+
 
 @end

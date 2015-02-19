@@ -29,8 +29,15 @@ static NSString * const ProjectKey = @"projects";
 }
 
 - (void)addProject:(Project *)project {
-
+    if (!project) {
+        return;
+    }
     
+    NSMutableArray *mutableProjects = [[NSMutableArray alloc] initWithArray:self.projects];
+    [mutableProjects addObject:project];
+    
+    self.projects = mutableProjects;
+    [self synchronize];
 }
 
 - (void)removeProject:(Project *)project {
@@ -42,6 +49,7 @@ static NSString * const ProjectKey = @"projects";
     [mutableProjects removeObject:project];
     
     self.projects = mutableProjects;
+    [self synchronize];
 }
 
 - (void)loadFromDefaults {
@@ -51,6 +59,16 @@ static NSString * const ProjectKey = @"projects";
         [projects addObject:[[Project alloc] initWithDictionary:dictionary]];
     }
     self.projects = projects;
+}
+
+- (void)synchronize {
+    NSMutableArray *projectDictionaries = [NSMutableArray new];
+    for (Project *project in self.projects) {
+        NSDictionary *dictionary = [project projectDictionary];
+        [projectDictionaries addObject:dictionary];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:projectDictionaries forKey:ProjectKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

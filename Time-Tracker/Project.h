@@ -16,7 +16,7 @@
 
 - (void)addEntry:(WorkPeriods *)entry;
 - (void)removeEntry:(WorkPeriods *)entry;
-- (NSDictionary *)workPeriodsDictionary;
+- (NSDictionary *)projectDictionary;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
