@@ -8,7 +8,7 @@
 
 #import "DetailViewController.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -21,12 +21,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Buttons
+
 - (IBAction)addButton:(id)sender {
 }
 - (IBAction)clockInButton:(id)sender {
@@ -35,6 +39,22 @@
 }
 - (IBAction)reportButton:(id)sender {
 }
+
+#pragma mark - Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    textField.text = self.titleTextField.text;
+    self.title = textField.text;
+    return YES;
+}
+
+
+
 
 /*
 #pragma mark - Navigation
