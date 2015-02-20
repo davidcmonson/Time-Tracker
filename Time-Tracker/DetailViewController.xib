@@ -36,13 +36,29 @@
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sPW-6K-F8v">
                     <rect key="frame" x="0.0" y="516" width="320" height="44"/>
                     <items>
-                        <barButtonItem title="Item" id="Cgi-rL-XEb"/>
+                        <barButtonItem title="Add" id="Cgi-rL-XEb">
+                            <connections>
+                                <action selector="addButton:" destination="-1" id="rkJ-X1-0eR"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Zmg-8P-3f8"/>
-                        <barButtonItem title="Item" id="ZMY-8w-QHI"/>
+                        <barButtonItem title="Clock In" id="ZMY-8w-QHI">
+                            <connections>
+                                <action selector="clockInButton:" destination="-1" id="3PV-TG-Vi8"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="zSs-uq-WbK"/>
-                        <barButtonItem title="Item" id="QjA-dn-tIo"/>
+                        <barButtonItem title="Clock Out" id="QjA-dn-tIo">
+                            <connections>
+                                <action selector="clockOutButton:" destination="-1" id="JRa-WP-jbd"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="lmH-2P-pTq"/>
-                        <barButtonItem title="Item" id="Kpq-6L-z7X"/>
+                        <barButtonItem title="Report" id="Kpq-6L-z7X">
+                            <connections>
+                                <action selector="reportButton:" destination="-1" id="RxH-dT-kov"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zul-wy-iXq">

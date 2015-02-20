@@ -27,6 +27,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)addButton:(id)sender {
+}
+- (IBAction)clockInButton:(id)sender {
+}
+- (IBAction)clockOutButton:(id)sender {
+}
+- (IBAction)reportButton:(id)sender {
+}
 
 /*
 #pragma mark - Navigation
