@@ -7,15 +7,24 @@
 //
 
 #import "ListTableViewDataSource.h"
+#import "ProjectController.h"
+#import "Project.h"
+
+static NSString * const cellIdentifier = @"cell";
 
 @implementation ListTableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [ProjectController sharedInstance].projects.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 0;
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+
+    Project *project = [ProjectController sharedInstance].projects[indexPath.row];
+    cell.textLabel.text = project.title;
+
+    return cell;
 }
 
 @end
