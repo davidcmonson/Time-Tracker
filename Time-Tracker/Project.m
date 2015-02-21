@@ -17,6 +17,7 @@ static NSString * const EntryKey = @"entry";
 @interface Project ()
 
 @property (nonatomic, strong) WorkPeriods *entry;
+@property (nonatomic, strong) NSDate *currentProperty;
 
 @end
 
@@ -75,6 +76,26 @@ static NSString * const EntryKey = @"entry";
     
     self.entries = mutableEntries;
     [self synchronize];
+}
+
+- (void)clockIn {
+    [self startNewEntry];
+}
+
+- (void)clockOut {
+    [self endCurrentEntry];
+}
+
+- (void)startNewEntry {
+    self.entry = [WorkPeriods new];
+    self.entry.clockIn = [NSDate date];
+    self.currentProperty = self.entry.clockIn;
+}
+
+- (void)endCurrentEntry {
+    self.entry = [WorkPeriods new];
+    self.entry.clockOut = [NSDate date];
+    self.currentProperty = self.entry.clockOut;
 }
 
 

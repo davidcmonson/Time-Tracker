@@ -17,7 +17,6 @@ static NSString * const cellIdentifier = @"cell";
 @interface DetailTableViewDataSource ()
 
 @property (nonatomic, strong) DetailViewController *dvc;
-@property (nonatomic, strong) Project *project;
 
 @end
 

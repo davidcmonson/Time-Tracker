@@ -38,8 +38,11 @@
 - (IBAction)addButton:(id)sender {
 }
 - (IBAction)clockInButton:(id)sender {
+    [self.project clockIn];
 }
 - (IBAction)clockOutButton:(id)sender {
+    [self.project clockOut];
+    [self.tableView reloadData];
 }
 - (IBAction)reportButton:(id)sender {
 }

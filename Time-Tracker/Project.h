@@ -18,5 +18,7 @@
 - (void)removeEntry:(WorkPeriods *)entry;
 - (NSDictionary *)projectDictionary;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
+- (void)clockIn;
+- (void)clockOut;
 
 @end
