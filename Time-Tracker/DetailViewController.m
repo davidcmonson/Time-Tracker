@@ -7,7 +7,8 @@
 //
 
 #import "DetailViewController.h"
-#import "DetailTableViewDataSource.m"
+#import "DetailTableViewDataSource.h"
+#import "Project.h"
 
 @interface DetailViewController () <UITextFieldDelegate>
 
@@ -20,10 +21,21 @@
 
 @implementation DetailViewController
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.dataSource = [DetailTableViewDataSource new];
+        
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     self.dataSource.project = self.project;
+    self.tableView.dataSource = self.dataSource;
     // Do any additional setup after loading the view from its nib.
     
 }
@@ -39,6 +51,7 @@
 }
 - (IBAction)clockInButton:(id)sender {
     [self.project clockIn];
+    [self.tableView reloadData];
 }
 - (IBAction)clockOutButton:(id)sender {
     [self.project clockOut];

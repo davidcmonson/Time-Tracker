@@ -87,9 +87,11 @@ static NSString * const EntryKey = @"entry";
 }
 
 - (void)startNewEntry {
-    self.entry = [WorkPeriods new];
-    self.entry.clockIn = [NSDate date];
-    self.currentProperty = self.entry.clockIn;
+    WorkPeriods *entry = [WorkPeriods new];
+    entry.clockIn = [NSDate date];
+    self.entry = entry;
+    
+    [self addEntry:entry];
 }
 
 - (void)endCurrentEntry {
