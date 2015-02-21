@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Project;
 
 @interface DetailViewController : UIViewController
 
 @property (nonatomic, strong) NSArray *titles;
+@property (nonatomic, strong) Project *project;
 
 @end

@@ -7,12 +7,14 @@
 //
 
 #import "DetailViewController.h"
+#import "DetailTableViewDataSource.m"
 
 @interface DetailViewController () <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (nonatomic, strong) DetailTableViewDataSource *dataSource;
 
 @end
 
@@ -20,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.dataSource.project = self.project;
     // Do any additional setup after loading the view from its nib.
     
 }

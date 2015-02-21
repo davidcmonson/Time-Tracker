@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+@class Project;
 
 @interface DetailTableViewDataSource : NSObject <UITableViewDataSource>
+
+@property (nonatomic, strong) Project *project;
 
 @end
