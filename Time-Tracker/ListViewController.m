@@ -31,12 +31,19 @@
     [super viewDidLoad];
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.dataSource = self.dataSource;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(buttonPressed:)];
     [self.view addSubview:self.tableView];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DetailViewController *dvc = [DetailViewController new];
     dvc.project = [ProjectController sharedInstance].projects[indexPath.row];//not sure on syntax?
+    [self.navigationController pushViewController:dvc animated:YES];
+}
+
+- (void)buttonPressed:(id)sender {
+    DetailViewController *dvc = [[DetailViewController alloc] init];
+    [self.navigationController pushViewController:dvc animated:YES];
 }
 
 @end
