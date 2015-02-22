@@ -52,6 +52,22 @@ static NSString * const ProjectKey = @"projects";
     [self synchronize];
 }
 
+- (void)replaceOldProject:(Project *)oldProject withNewProject:(Project *)newProject {
+    if (!oldProject || !newProject) {
+        return;
+    }
+    
+    NSMutableArray *mutableProject = [[NSMutableArray alloc] initWithArray:self.projects];
+    
+    if ([mutableProject containsObject:oldProject]) {
+        NSUInteger index = [mutableProject indexOfObject:oldProject];
+        [mutableProject replaceObjectAtIndex:index withObject:newProject];
+    }
+    
+    self.projects = mutableProject;
+}
+
+
 - (void)loadFromDefaults {
     NSArray *projectDictionaries = [[NSUserDefaults standardUserDefaults] objectForKey:ProjectKey];
     NSMutableArray *projects = [NSMutableArray new];

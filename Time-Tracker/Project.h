@@ -20,5 +20,6 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 - (void)clockIn;
 - (void)clockOut;
+- (NSString *)time;
 
 @end

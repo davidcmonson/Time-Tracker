@@ -14,7 +14,9 @@
 #import "ProjectController.h"
 #import "WorkPeriods.h"
 
-@interface DetailViewController () <UITextFieldDelegate>
+static NSString * const EntryKey = @"entry";
+
+@interface DetailViewController () <UITextFieldDelegate, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -37,11 +39,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.project = [Project new];
     self.dataSource.project = self.project;
     self.tableView.dataSource = self.dataSource;
+    self.timeLabel.text = [self.project time];
+    self.titleTextField.text = self.project.title;
+    self.titleTextField.delegate = self;
     // Do any additional setup after loading the view from its nib.
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,12 +68,25 @@
     
 }
 - (IBAction)clockInButton:(id)sender {
+    Project *project = [[Project alloc] init];
+    
+//    [[ProjectController sharedInstance] replaceOldProject:self.project withNewProject:project];
+//        
+//    NSInteger lastRow = [[ProjectController sharedInstance].projects indexOfObject:project];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+//    
+//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+    
     [self.project clockIn];
-    [self.tableView reloadData];
+
 }
+
 - (IBAction)clockOutButton:(id)sender {
     [self.project clockOut];
     [self.tableView reloadData];
+    
+    WorkPeriods *entry = [WorkPeriods new];
+    self.timeLabel.text = [NSString stringWithFormat:@"%@", entry.clockOut];
 }
 - (IBAction)reportButton:(id)sender {
     MFMailComposeViewController *mailCompose = [MFMailComposeViewController new];
@@ -76,6 +99,10 @@
 }
 
 #pragma mark - Delegate
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];

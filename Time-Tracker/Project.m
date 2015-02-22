@@ -29,6 +29,7 @@ static NSString * const EntryKey = @"entry";
         
         self.title = dictionary[TitleKey];
         NSMutableArray *entries = [NSMutableArray new];
+        
         for (NSDictionary *entry in dictionary[EntryKey] ) {
             [entries addObject:[[WorkPeriods alloc] initWithDictionary:entry]];
         }
@@ -54,13 +55,23 @@ static NSString * const EntryKey = @"entry";
     [[ProjectController sharedInstance] synchronize];
 }
 
+- (void)setEntries:(NSArray *)entries {
+    _entries = entries;
+    
+    [self synchronize];
+}
+
 - (void)addEntry:(WorkPeriods *)entry {
     if (!entry) {
         return;
     }
     
+    NSDictionary *dictionary = [entry workPeriodsDictionary];
+    
+    
     NSMutableArray *mutableEntries = [[NSMutableArray alloc] initWithArray:self.entries];
-    [mutableEntries addObject:entry];
+    [mutableEntries addObject:dictionary];
+    
     
     self.entries = mutableEntries;
     [self synchronize];
@@ -95,9 +106,13 @@ static NSString * const EntryKey = @"entry";
 }
 
 - (void)endCurrentEntry {
-    self.entry = [WorkPeriods new];
     self.entry.clockOut = [NSDate date];
-    self.currentProperty = self.entry.clockOut;
+
+    [self synchronize];
+}
+
+- (NSString *)time {
+    return [NSString stringWithFormat:@" - %@", (NSString *)self.entry.clockOut];
 }
 
 

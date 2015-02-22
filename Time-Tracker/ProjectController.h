@@ -16,6 +16,7 @@
 + (ProjectController *)sharedInstance;
 - (void)addProject:(Project *)project;
 - (void)removeProject:(Project *)project;
+- (void)replaceOldProject:(Project *)oldProject withNewProject:(Project *)newProject;
 - (void)synchronize;
 
 @end
