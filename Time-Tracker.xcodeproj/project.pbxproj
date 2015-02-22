@@ -22,6 +22,8 @@
 		7116F79119421700006C8F06 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7116F77919421700006C8F06 /* UIKit.framework */; };
 		7116F79919421700006C8F06 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7116F79719421700006C8F06 /* InfoPlist.strings */; };
 		7116F79B19421700006C8F06 /* Time_TrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7116F79A19421700006C8F06 /* Time_TrackerTests.m */; };
+		77E79F4A1A994E4500BD6231 /* CustomEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E79F481A994E4500BD6231 /* CustomEntryViewController.m */; };
+		77E79F4B1A994E4500BD6231 /* CustomEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77E79F491A994E4500BD6231 /* CustomEntryViewController.xib */; };
 		DA0536CC1A96883A0093DC3A /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0536CB1A96883A0093DC3A /* ListViewController.m */; };
 		DA0536CF1A968B180093DC3A /* ListTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0536CE1A968B180093DC3A /* ListTableViewDataSource.m */; };
 		DA0536D21A9690370093DC3A /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0536D11A9690370093DC3A /* Project.m */; };
@@ -61,6 +63,9 @@
 		7116F79619421700006C8F06 /* Time-TrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Time-TrackerTests-Info.plist"; sourceTree = "<group>"; };
 		7116F79819421700006C8F06 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7116F79A19421700006C8F06 /* Time_TrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Time_TrackerTests.m; sourceTree = "<group>"; };
+		77E79F471A994E4500BD6231 /* CustomEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomEntryViewController.h; sourceTree = "<group>"; };
+		77E79F481A994E4500BD6231 /* CustomEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomEntryViewController.m; sourceTree = "<group>"; };
+		77E79F491A994E4500BD6231 /* CustomEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomEntryViewController.xib; sourceTree = "<group>"; };
 		DA0536CA1A96883A0093DC3A /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		DA0536CB1A96883A0093DC3A /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		DA0536CD1A968B180093DC3A /* ListTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewDataSource.h; sourceTree = "<group>"; };
@@ -143,6 +148,9 @@
 				08C50BCA1A97E6C60054EF74 /* DetailViewController.h */,
 				08C50BCB1A97E6C60054EF74 /* DetailViewController.m */,
 				08C50BCC1A97E6C60054EF74 /* DetailViewController.xib */,
+				77E79F471A994E4500BD6231 /* CustomEntryViewController.h */,
+				77E79F481A994E4500BD6231 /* CustomEntryViewController.m */,
+				77E79F491A994E4500BD6231 /* CustomEntryViewController.xib */,
 				08C50BCF1A97F2FA0054EF74 /* DetailTableViewDataSource.h */,
 				08C50BD01A97F2FA0054EF74 /* DetailTableViewDataSource.m */,
 				DA0536D61A96966E0093DC3A /* ProjectController.h */,
@@ -260,6 +268,7 @@
 			files = (
 				7116F78019421700006C8F06 /* InfoPlist.strings in Resources */,
 				08C50BCE1A97E6C60054EF74 /* DetailViewController.xib in Resources */,
+				77E79F4B1A994E4500BD6231 /* CustomEntryViewController.xib in Resources */,
 				7116F78819421700006C8F06 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +292,7 @@
 				7116F78619421700006C8F06 /* TTAppDelegate.m in Sources */,
 				7116F78219421700006C8F06 /* main.m in Sources */,
 				08C50BCD1A97E6C60054EF74 /* DetailViewController.m in Sources */,
+				77E79F4A1A994E4500BD6231 /* CustomEntryViewController.m in Sources */,
 				DA0536D81A96966E0093DC3A /* ProjectController.m in Sources */,
 				DA0536CF1A968B180093DC3A /* ListTableViewDataSource.m in Sources */,
 				DA0536D21A9690370093DC3A /* Project.m in Sources */,

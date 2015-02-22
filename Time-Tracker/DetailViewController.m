@@ -10,6 +10,9 @@
 #import "DetailTableViewDataSource.h"
 #import "Project.h"
 #import "CustomEntryViewController.h"
+#import <MessageUI/MessageUI.h>
+#import "ProjectController.h"
+#import "WorkPeriods.h"
 
 @interface DetailViewController () <UITextFieldDelegate>
 
@@ -34,7 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.dataSource.project = self.project;
     self.tableView.dataSource = self.dataSource;
     // Do any additional setup after loading the view from its nib.
@@ -63,6 +66,13 @@
     [self.tableView reloadData];
 }
 - (IBAction)reportButton:(id)sender {
+    MFMailComposeViewController *mailCompose = [MFMailComposeViewController new];
+    NSString *times;
+    for (WorkPeriods *entry in self.project.entries) {
+        times = [NSString stringWithFormat:@"%@ \n %@", entry.clockIn, entry.clockOut];
+    }
+    [mailCompose setMessageBody:times isHTML:YES];
+    [self presentViewController:mailCompose animated:YES completion:nil];
 }
 
 #pragma mark - Delegate
