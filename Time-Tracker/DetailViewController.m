@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "DetailTableViewDataSource.h"
 #import "Project.h"
+#import "CustomEntryViewController.h"
 
 @interface DetailViewController () <UITextFieldDelegate>
 
@@ -48,6 +49,10 @@
 #pragma mark - Buttons
 
 - (IBAction)addButton:(id)sender {
+    CustomEntryViewController *customEntryVC = [CustomEntryViewController new];
+    customEntryVC.project = self.project;
+    [self presentViewController:customEntryVC animated:YES completion:nil];
+    
 }
 - (IBAction)clockInButton:(id)sender {
     [self.project clockIn];
