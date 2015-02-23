@@ -24,8 +24,15 @@ static NSString * const ProjectKey = @"projects";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[ProjectController alloc] init];
+        [sharedInstance loadFromDefaults];
     });
     return sharedInstance;
+}
+
+- (void)setProjects:(NSArray *)projects {
+    _projects = projects;
+
+    [self synchronize];
 }
 
 - (void)addProject:(Project *)project {

@@ -14,6 +14,7 @@
 @interface ListViewController () <UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) ListTableViewDataSource *dataSource;
 
 @end
 
@@ -36,13 +37,18 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Project *project = [ProjectController sharedInstance].projects[indexPath.row];
     DetailViewController *dvc = [DetailViewController new];
-    dvc.project = [ProjectController sharedInstance].projects[indexPath.row];//not sure on syntax?
+    dvc.project = project;
     [self.navigationController pushViewController:dvc animated:YES];
 }
 
 - (void)buttonPressed:(id)sender {
+    Project *project = [[Project alloc] init];
+    [[ProjectController sharedInstance] addProject:project];
+
     DetailViewController *dvc = [[DetailViewController alloc] init];
+    dvc.project = project;
     [self.navigationController pushViewController:dvc animated:YES];
 }
 

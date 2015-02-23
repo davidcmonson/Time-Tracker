@@ -18,7 +18,7 @@
     // Override point for customization after application launch.
     
     ListViewController *lvc = [[ListViewController alloc] init];
-    DetailViewController *dvc = [[DetailViewController alloc] init];
+    //DetailViewController *dvc = [[DetailViewController alloc] init];
     
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:lvc];
     self.window.rootViewController = navVC;

@@ -7,16 +7,12 @@
 //
 
 #import "DetailTableViewDataSource.h"
-#import "DetailViewController.h"
 #import "ProjectController.h"
-#import "Project.h"
-#import "WorkPeriods.h"
 
 static NSString * const cellIdentifier = @"cell";
 
 @interface DetailTableViewDataSource ()
 
-@property (nonatomic, strong) DetailViewController *dvc;
 
 @end
 

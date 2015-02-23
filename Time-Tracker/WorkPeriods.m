@@ -31,7 +31,7 @@ static NSString * const clockOut = @"clockOut";
     if (self.clockOut) {
         dictionary[clockOut] = self.clockOut;
     }
-    return [NSDictionary new];
+    return dictionary;
 }
 
 

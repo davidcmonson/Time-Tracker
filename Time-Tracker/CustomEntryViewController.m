@@ -7,7 +7,6 @@
 //
 
 #import "CustomEntryViewController.h"
-#import "WorkPeriods.h"
 
 @interface CustomEntryViewController ()
 
@@ -36,6 +35,7 @@
     WorkPeriods *entry = [WorkPeriods new];
     entry.clockIn = self.startDatePicker.date;
     entry.clockOut = self.endDatePicker.date;
+    [self.project addEntry:entry];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

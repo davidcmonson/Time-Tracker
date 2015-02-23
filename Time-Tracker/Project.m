@@ -17,7 +17,7 @@ static NSString * const EntryKey = @"entry";
 @interface Project ()
 
 @property (nonatomic, strong) WorkPeriods *entry;
-@property (nonatomic, strong) NSDate *currentProperty;
+//@property (nonatomic, strong) NSDate *currentProperty;
 
 @end
 
@@ -48,6 +48,8 @@ static NSString * const EntryKey = @"entry";
         NSDictionary *dictionary = [entry workPeriodsDictionary];
         [entries addObject:dictionary];
     }
+    [dictionary setObject:entries forKey:EntryKey];
+
     return dictionary;
 }
 
@@ -65,12 +67,9 @@ static NSString * const EntryKey = @"entry";
     if (!entry) {
         return;
     }
-    
-    NSDictionary *dictionary = [entry workPeriodsDictionary];
-    
-    
+
     NSMutableArray *mutableEntries = [[NSMutableArray alloc] initWithArray:self.entries];
-    [mutableEntries addObject:dictionary];
+    [mutableEntries addObject:entry];
     
     
     self.entries = mutableEntries;
@@ -89,14 +88,6 @@ static NSString * const EntryKey = @"entry";
     [self synchronize];
 }
 
-- (void)clockIn {
-    [self startNewEntry];
-}
-
-- (void)clockOut {
-    [self endCurrentEntry];
-}
-
 - (void)startNewEntry {
     WorkPeriods *entry = [WorkPeriods new];
     entry.clockIn = [NSDate date];
@@ -112,9 +103,35 @@ static NSString * const EntryKey = @"entry";
 }
 
 - (NSString *)time {
-    return [NSString stringWithFormat:@" - %@", (NSString *)self.entry.clockOut];
-}
 
+    NSInteger totalHours = 0;
+    NSInteger totalMinutes = 0;
+
+    for (WorkPeriods *entry in self.entries) {
+
+        NSTimeInterval distanceBetweenDates = [entry.clockOut timeIntervalSinceDate:entry.clockIn];
+
+        // First we'll see how many hours
+        double secondsInAnHour = 3600;
+        NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+
+        // We need to subtract out the hours and then see how many minutes
+        double secondsInAMinute = 60;
+        NSInteger minutesBetweenDates = (distanceBetweenDates - (hoursBetweenDates * secondsInAnHour)) / secondsInAMinute;
+
+        totalHours += hoursBetweenDates;
+        totalMinutes += minutesBetweenDates;
+
+    }
+
+    // If the hour or minute total is less than 10, we want a 0 before it in the string
+
+    NSString *hourString = totalHours < 10 ? [NSString stringWithFormat:@"0%ld", (long)totalHours] : [NSString stringWithFormat:@"%ld", (long)totalHours];
+
+    NSString *minuteString = totalMinutes < 10 ? [NSString stringWithFormat:@"0%ld", (long)totalMinutes] : [NSString stringWithFormat:@"%ld", (long)totalMinutes];
+
+    return [NSString stringWithFormat:@"%@:%@", hourString, minuteString];
+}
 
 
 @end

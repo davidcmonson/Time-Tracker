@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class Project;
+#import "Project.h"
 
 @interface ProjectController : NSObject
 

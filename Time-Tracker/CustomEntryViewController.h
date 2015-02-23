@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class Project;
+#import "Project.h"
 
 @interface CustomEntryViewController : UIViewController
 

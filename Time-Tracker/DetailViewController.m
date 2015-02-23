@@ -39,13 +39,14 @@ static NSString * const EntryKey = @"entry";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.project = [Project new];
-    self.dataSource.project = self.project;
-    self.tableView.dataSource = self.dataSource;
-    self.timeLabel.text = [self.project time];
+
     self.titleTextField.text = self.project.title;
     self.titleTextField.delegate = self;
-    // Do any additional setup after loading the view from its nib.
+    self.timeLabel.text = [self.project time];
+
+    self.dataSource.project = self.project;
+    self.tableView.dataSource = self.dataSource;
+        // Do any additional setup after loading the view from its nib.
     
 }
 
@@ -68,7 +69,7 @@ static NSString * const EntryKey = @"entry";
     
 }
 - (IBAction)clockInButton:(id)sender {
-    Project *project = [[Project alloc] init];
+    [self.project startNewEntry];
     
 //    [[ProjectController sharedInstance] replaceOldProject:self.project withNewProject:project];
 //        
@@ -76,18 +77,14 @@ static NSString * const EntryKey = @"entry";
 //    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
 //    
 //    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-    
-    [self.project clockIn];
-
+    [self.tableView reloadData];
 }
 
 - (IBAction)clockOutButton:(id)sender {
-    [self.project clockOut];
+    [self.project endCurrentEntry];
     [self.tableView reloadData];
-    
-    WorkPeriods *entry = [WorkPeriods new];
-    self.timeLabel.text = [NSString stringWithFormat:@"%@", entry.clockOut];
 }
+
 - (IBAction)reportButton:(id)sender {
     MFMailComposeViewController *mailCompose = [MFMailComposeViewController new];
     NSString *times;

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class WorkPeriods;
+#import "WorkPeriods.h"
 
 @interface Project : NSObject
 
@@ -18,8 +18,8 @@
 - (void)removeEntry:(WorkPeriods *)entry;
 - (NSDictionary *)projectDictionary;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
-- (void)clockIn;
-- (void)clockOut;
+- (void)startNewEntry;
+- (void)endCurrentEntry;
 - (NSString *)time;
 
 @end
