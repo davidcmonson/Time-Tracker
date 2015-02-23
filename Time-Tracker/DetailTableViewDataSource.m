@@ -9,7 +9,7 @@
 #import "DetailTableViewDataSource.h"
 #import "ProjectController.h"
 
-static NSString * const cellIdentifier = @"cell";
+static NSString * const cellIdentifier = @"detailCell";
 
 @interface DetailTableViewDataSource ()
 
@@ -27,7 +27,7 @@ static NSString * const cellIdentifier = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
     WorkPeriods *entries = [self.project entries][indexPath.row];

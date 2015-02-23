@@ -32,6 +32,7 @@
     [super viewDidLoad];
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.dataSource = self.dataSource;
+    self.tableView.delegate = self;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(buttonPressed:)];
     [self.view addSubview:self.tableView];
 }

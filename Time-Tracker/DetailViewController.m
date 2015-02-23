@@ -107,8 +107,8 @@ static NSString * const EntryKey = @"entry";
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    textField.text = self.titleTextField.text;
-    self.title = textField.text;
+    self.project.title = textField.text;
+    [[ProjectController sharedInstance] synchronize];
     return YES;
 }
 
